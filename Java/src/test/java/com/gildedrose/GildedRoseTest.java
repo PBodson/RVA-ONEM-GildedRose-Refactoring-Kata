@@ -173,4 +173,35 @@ class GildedRoseTest {
         assertEquals(80, sulfuras.quality);
         assertEquals("Sulfuras, Hand of Ragnaros", sulfuras.name);
     }
+
+    @Test
+    void givenConjuredItem_whenUpdateQuality(){
+        Item conjuredItem = new Item("Conjured Mana Cake", 4, 6);
+        GildedRose gildedRose = new GildedRose( new Item[]{ conjuredItem });
+
+        gildedRose.updateQuality();
+        assertEquals(3, conjuredItem.sellIn);
+        assertEquals(4, conjuredItem.quality);
+        assertEquals("Conjured Mana Cake", conjuredItem.name);
+
+        gildedRose.updateQuality();
+        assertEquals(2, conjuredItem.sellIn);
+        assertEquals(2, conjuredItem.quality);
+        assertEquals("Conjured Mana Cake", conjuredItem.name);
+
+        gildedRose.updateQuality();
+        assertEquals(1, conjuredItem.sellIn);
+        assertEquals(0, conjuredItem.quality);
+        assertEquals("Conjured Mana Cake", conjuredItem.name);
+
+        gildedRose.updateQuality();
+        assertEquals(0, conjuredItem.sellIn);
+        assertEquals(0, conjuredItem.quality);
+        assertEquals("Conjured Mana Cake", conjuredItem.name);
+
+        gildedRose.updateQuality();
+        assertEquals(-1, conjuredItem.sellIn);
+        assertEquals(0, conjuredItem.quality);
+        assertEquals("Conjured Mana Cake", conjuredItem.name);
+    }
 }
