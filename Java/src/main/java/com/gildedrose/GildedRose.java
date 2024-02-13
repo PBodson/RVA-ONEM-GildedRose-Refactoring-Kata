@@ -26,17 +26,16 @@ class GildedRose {
                 }
             }
             else if (BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT.equals(item.name)) {
-                if (item.quality < 50) {
-                    increaseQuality(item);
+                increaseQualityIfPossible(item);
 
-                    if (item.sellIn < 11) {
-                        increaseQualityIfPossible(item);
-                    }
-
-                    if (item.sellIn < 6) {
-                        increaseQualityIfPossible(item);
-                    }
+                if (item.sellIn < 11) {
+                    increaseQualityIfPossible(item);
                 }
+
+                if (item.sellIn < 6) {
+                    increaseQualityIfPossible(item);
+                }
+
 
                 item.sellIn = item.sellIn - 1;
                 if (item.sellIn < 0) {
