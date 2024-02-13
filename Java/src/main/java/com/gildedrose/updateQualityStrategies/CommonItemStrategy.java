@@ -2,8 +2,6 @@ package com.gildedrose.updateQualityStrategies;
 
 import com.gildedrose.Item;
 
-import static com.gildedrose.ItemUtil.decreaseQualityIfPossible;
-
 public class CommonItemStrategy implements ItemQualityStrategy{
     @Override
     public void updateQuality(Item item) {
@@ -13,6 +11,16 @@ public class CommonItemStrategy implements ItemQualityStrategy{
 
         if (item.sellIn < 0) {
             decreaseQualityIfPossible(item);
+        }
+    }
+
+    private static void decreaseQualityIfPossible(Item item){
+        if (item.quality > 0) {
+            item.quality = item.quality - 1;
+        }
+
+        if(item.name.startsWith("Conjured") && item.quality > 0){
+            item.quality = item.quality - 1;
         }
     }
 }

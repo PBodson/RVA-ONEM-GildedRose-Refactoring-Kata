@@ -13,10 +13,4 @@ public class ItemUtil {
             item.quality = item.quality + 1;
         }
     }
-
-    public static void decreaseQualityIfPossible(Item item){
-        if (item.quality > 0) {
-            item.quality = item.quality - 1;
-        }
-    }
 }
