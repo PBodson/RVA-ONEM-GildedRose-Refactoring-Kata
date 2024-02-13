@@ -10,15 +10,13 @@ public class ItemUtil {
 
     public static void increaseQualityIfPossible(Item item) {
         if (item.quality < 50) {
-            increaseQuality(item);
+            item.quality = item.quality + 1;
         }
     }
 
-    public static void decreaseQuality(Item item) {
-        item.quality = item.quality - 1;
-    }
-
-    private static void increaseQuality(Item item) {
-        item.quality = item.quality + 1;
+    public static void decreaseQualityIfPossible(Item item){
+        if (item.quality > 0) {
+            item.quality = item.quality - 1;
+        }
     }
 }
